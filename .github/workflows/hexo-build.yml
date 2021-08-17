@@ -1,0 +1,48 @@
+name: hexo-build
+on:
+  push:
+    branches:
+      - main
+jobs:
+  WebStack-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['lts/erbium']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+        env:
+          TZ: Asia/Shanghai
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@main
+        with:
+          node-version:  ${{ matrix.node }}
+      - name: Handle npm cache
+        uses: actions/cache@main
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          npm install
+      - name: Deploy
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          npm install hexo-cli -g
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name "${{secrets.GIT_NAME}}"
+          git config --global user.email "${{secrets.GIT_EMAIL}}"
+          hexo clean
+          hexo generate 
+          hexo deploy
