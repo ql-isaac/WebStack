@@ -30,9 +30,9 @@ menu:
       - name: 站长工具
         icon: fas fa-tools
         config: 站长工具
-  - name: 优秀项目
+  - name: 优秀开源项目
     icon: far fa-star
-    config: 优秀项目
+    config: 优秀开源项目
   - name: 优质软件
     icon: far fa-star
     config: 优质软件
@@ -158,7 +158,11 @@ menu:
     url: https://myssl.com/
     description: 网站监测
 
-优秀项目:
+优秀开源项目:
+  - name: Hexo
+    img: /images/logos/github.png
+    url: https://github.com/hexojs/hexo
+    description: A fast, simple & powerful blog framework, powered by Node.js.
   - name: Twikoo
     img: /images/logos/github.png
     url: https://github.com/imaegoo/twikoo
@@ -166,7 +170,27 @@ menu:
   - name: Butterfly
     img: /images/logos/github.png
     url: https://github.com/jerryc127/hexo-theme-butterfly
-    description: A Hexo Theme
+    description: 我的主站使用的主题
+  - name: Ventoy
+    img: /images/logos/github.png
+    url: https://github.com/ventoy/Ventoy
+    description: A new bootable USB solution.
+  - name: Typecho
+    img: /images/logos/github.png
+    url: https://github.com/typecho/typecho
+    description: A PHP Blogging Platform. Simple and Powerful.
+  - name: WebStack
+    img: /images/logos/github.png
+    url: https://github.com/HCLonely/hexo-theme-webstack
+    description: 我的导航站使用的主题
+  - name: WebStack
+    img: /images/logos/github.png
+    url: https://github.com/HCLonely/hexo-theme-webstack
+    description: 我的导航站使用的主题
+  - name: Notepad3
+    img: /images/logos/github.png
+    url: https://github.com/rizonesoft/Notepad3
+    description: Windows 自带记事本的升级版
 
 优质软件:
   - name: ScreenToGif
